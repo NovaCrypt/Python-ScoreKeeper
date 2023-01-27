@@ -1,0 +1,5 @@
+__pycache__/*
+customtkinter/__pycache__/*
+customtkinter/**/__pycache__/*
+darkdetect/__pycache__/*
+darkdetect/**/__pycache__/*
