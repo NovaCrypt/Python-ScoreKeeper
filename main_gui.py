@@ -117,8 +117,11 @@ def login():
 
   open_game_window(player)
 
+def change_theme(choice):
+  customtkinter.set_appearance_mode(choice.lower())
+
 login_frame = customtkinter.CTkFrame(master=root)
-login_frame.pack(pady=20,padx=60,fill="both",expand=True)
+login_frame.pack(pady=(20,10),padx=60,expand=True)
 
 login_label = customtkinter.CTkLabel(master=login_frame,text="Login",font=("Acumin Pro Extra Light",28))
 login_label.pack(pady=12,padx=10)
@@ -128,5 +131,11 @@ username_entry.pack(pady=12,padx=10)
 
 login_button = customtkinter.CTkButton(master=login_frame,text="Login",command=login)
 login_button.pack(pady=12,padx=10)
+
+theme_frame = customtkinter.CTkFrame(master=root)
+theme_frame.pack(pady=(0,20),padx=60,expand=True)
+
+theme_selector = customtkinter.CTkComboBox(master=theme_frame,values=["System","Dark","Light"],command=change_theme)
+theme_selector.pack(padx=10,pady=12)
 
 root.mainloop()
