@@ -57,6 +57,19 @@ def open_game_window(player: object):
 
     score_label.configure(text=f"{player.score}")
 
+  def delete_player():
+    users_file = open("users.json")
+    users_dict = json.loads(users_file.read())
+    users_file.close()
+
+    del users_dict[player.name]
+
+    users_file = open("users.json", "w")
+    users_file.write(json.dumps(users_dict, indent=2))
+    users_file.close()
+
+    game_window.destroy()
+
   game_window.rowconfigure(0,weight=1)
   game_window.columnconfigure(0,weight=1)
 
@@ -81,6 +94,9 @@ def open_game_window(player: object):
 
   plus_button = customtkinter.CTkButton(master=control_frame,text="+",command=positive_score_change,width=40)
   plus_button.grid(row=0,column=2,padx=(0,10),pady=12)
+
+  del_button = customtkinter.CTkButton(master=control_frame,text="Delete",command=delete_player)
+  del_button.grid(row=1,column=0,columnspan=3,sticky="ew",padx=10,pady=(0,12))
 
 
 def login():
