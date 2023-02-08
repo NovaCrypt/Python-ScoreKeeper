@@ -8,12 +8,12 @@ customtkinter.set_default_color_theme("dark-blue")
 
 root = customtkinter.CTk()
 root.geometry("500x300")
-root.title("Game Login")
+root.title("Score Keeper")
 
 def open_game_window(player: object):
   game_window = customtkinter.CTkToplevel()
   game_window.geometry("500x300")
-  game_window.title("Game")
+  game_window.title("Score Keeper ({})".format(player.name))
 
   def negative_score_change():
     try:
